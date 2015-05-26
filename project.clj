@@ -4,4 +4,5 @@
   :license {:name "Apache License, Version 2.0"
             :url "http://www.apache.org/licenses/LICENSE-2.0"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [clj-http "1.1.2"]])
+                 [clj-http "1.1.2"]
+                 [cheshire "5.4.0"]])
