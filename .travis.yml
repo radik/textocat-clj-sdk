@@ -1,1 +1,10 @@
-lannguage: clojure
+language: clojure
+branches:
+  only:
+    - master
+    - release
+jdk:
+  - openjdk6
+  - openjdk7
+  - oraclejdk7
+  - oraclejdk8
