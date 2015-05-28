@@ -12,7 +12,7 @@
 (defn status
   "Returns a status of the service."
   []
-  ((client/get (request-url "status") {:as :json}) :body))
+  (:body (client/get (request-url "status") {:as :json})))
 
 (defn entity-queue
   "Enqueues text documents for an entity recognition.
@@ -24,26 +24,29 @@
 
   Returns collection identity."
   [auth-token docs]
-  ((client/post (request-url auth-token "entity/queue") 
+  (:body (client/post (request-url auth-token "entity/queue") 
                {:body (generate-string docs)
-                :content-type :json} {:as :json}) :body))
+                :content-type :json
+                :as :json})))
 
 (defn entity-request
   ""
   [auth-token batch-id]
-  ((client/get (request-url auth-token "entity/request") 
-               {:query-params {"batch_id" batch-id}} {:as :json}) :body))
+  (:body (client/get (request-url auth-token "entity/request") 
+               {:query-params {"batch_id" batch-id} 
+                :as :json})))
 
 (defn entity-retrieve
   ""
   [auth-token batch-ids]
-  ((client/get (request-url auth-token "entity/retrieve")
-               {:query-params {"batch_is" batch-ids}} {:as :json}) :body))
+  (:body (client/get (request-url auth-token "entity/retrieve")
+               {:query-params {"batch_is" batch-ids}
+                :as :json})))
 
 
 (defn entity-search
   ""
   [auth-token search-query]
-  ((client/get (request-url auth-token "entity/search")
-               {:query-params {"search_query" search-query}} {:as :json})
-   :body))
+  (:body (client/get (request-url auth-token "entity/search")
+                     {:query-params {"search_query" search-query}
+                      :as :json})))
