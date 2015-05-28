@@ -4,6 +4,8 @@
 
 [![Build Status](https://travis-ci.org/radik/textocat-clj-sdk.svg?branch=master)](https://travis-ci.org/radik/textocat-clj-sdk)
 
+[![Clojars Project](http://clojars.org/textocat-clj-sdk/latest-version.svg)]
+
 A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
