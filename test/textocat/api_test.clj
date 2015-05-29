@@ -55,3 +55,18 @@
                                                                 :endOffset 11
                                                                 :category "LOCATION"}]}]})})}
            (:batchIds (entity-retrieve auth-token "1" "2"))) ["1", "2"])))
+
+(deftest entity-search-test
+  (is (= (with-fake-routes
+           {(str (request-url "entity/search") "?auth_token=" auth-token "&search_query=LOCATION%3AWorld")
+            (fn [request]
+              {:status 200
+               :headers {}
+               :body (generate-string {:searchQuery "LOCATION:World"
+                                       :documents [{:status "FINISHED"
+                                                    :tag "clj-test"
+                                                    :entities [{:span "World"
+                                                                :beginOffset 7
+                                                                :endOffset 12
+                                                                :category "LOCATION"}]}]})})}
+           (:searchQuery (entity-search auth-token "LOCATION:World"))) "LOCATION:World")))
