@@ -34,3 +34,24 @@
               {:status 200 :headers {} :body (generate-string {:batchId "123"
                                                                :status "FINISHED"})})}
            (:batchId (entity-request auth-token "123"))) "123")))
+
+(deftest entity-retrieve-test
+  (is (= (with-fake-routes
+           {(str (request-url "entity/retrieve") "?auth_token=" auth-token "&batch_id=1&batch_id=2")
+            (fn [request]
+              {:status 200 
+               :headers {} 
+               :body (generate-string {:batchIds ["1","2"]
+                                       :documents [{:status "FINISHED"
+                                                    :tag "clj-test"
+                                                    :entities [{:span "World"
+                                                                :beginOffset 7
+                                                                :endOffset 12
+                                                                :category "LOCATION"}]}
+                                                   {:status "FINISHED"
+                                                    :tag "clj-test"
+                                                    :entities [{:span "Мир"
+                                                                :beginOffset 8
+                                                                :endOffset 11
+                                                                :category "LOCATION"}]}]})})}
+           (:batchIds (entity-retrieve auth-token "1" "2"))) ["1", "2"])))
