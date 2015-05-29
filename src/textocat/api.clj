@@ -24,26 +24,26 @@
   Returns collection identity."
   [auth-token docs]
   (:body (client/post (request-url "entity/queue") 
-               {:query-params {"auth_token" auth-token}
-                :body (generate-string docs)
-                :content-type :json
-                :as :json})))
+                      {:query-params {"auth_token" auth-token}
+                       :body (generate-string docs)
+                       :content-type :json
+                       :as :json})))
 
 (defn entity-request
   ""
   [auth-token batch-id]
   (:body (client/get (request-url "entity/request") 
-               {:query-params {"auth_token" auth-token
-                               "batch_id" batch-id} 
-                :as :json :debug true})))
+                     {:query-params {"auth_token" auth-token
+                                     "batch_id" batch-id} 
+                      :as :json})))
 
 (defn entity-retrieve
   ""
-  [auth-token batch-ids]
-  (:body (client/get (request-url auth-token "entity/retrieve")
-               {:query-params {"auth_token" auth-token
-                               "batch_id" batch-ids}
-                :as :json})))
+  [auth-token & batch-ids]
+  (:body (client/get (request-url "entity/retrieve")
+                     {:query-params {"auth_token" auth-token
+                                     "batch_id" batch-ids}
+                      :as :json})))
 
 
 (defn entity-search
