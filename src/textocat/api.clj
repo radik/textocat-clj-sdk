@@ -45,11 +45,10 @@
                                      "batch_id" batch-ids}
                       :as :json})))
 
-
 (defn entity-search
   ""
   [auth-token search-query]
-  (:body (client/get (request-url auth-token "entity/search")
+  (:body (client/get (request-url "entity/search")
                      {:query-params {"auth_token" auth-token
                                      "search_query" search-query}
                       :as :json})))
