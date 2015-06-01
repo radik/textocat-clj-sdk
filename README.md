@@ -23,7 +23,7 @@ This is unofficial python sdk for [Textocat](http://textocat.com).
 (textocat/status)
 
 ;; Enqueue doc for entity recognition
-(textocat/entity-queue [{:text "Hello, World!" :tag "my-tag"}])
+(textocat/entity-queue auth-token [{:text "Hello, World!" :tag "my-tag"}])
 ```
 
 ## License
