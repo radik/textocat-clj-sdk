@@ -1,16 +1,29 @@
-# textocat-clj-sdk
+# Unofficial Textocat Clojure SDK
 
 [![Join the chat at https://gitter.im/radik/textocat-clj-sdk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/radik/textocat-clj-sdk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Build Status](https://travis-ci.org/radik/textocat-clj-sdk.svg?branch=master)](https://travis-ci.org/radik/textocat-clj-sdk)
 
 [![Clojars Project](http://clojars.org/textocat-clj-sdk/latest-version.svg)](https://clojars.org/textocat-clj-sdk)
+This is unofficial python sdk for [Textocat](http://textocat.com).
 
-A Clojure library designed to ... well, that part is up to you.
-
+[Textocat API](http://docs.textocat.com).
 ## Usage
 
-FIXME
+```clojure
+;; Require lib
+(ns myprog
+  (:require [texocat.api :as textocat])) 
+
+;; Specify your auth-token
+(def auth-token "MY-AUTH-TOKEN")
+
+;; Get service status
+(textocat/status)
+
+;; Enqueue doc for entity recognition
+(textocat/entity-queue [{:text "Hello, World!" :tag "my-tag"}])
+```
 
 ## License
 
